@@ -1,20 +1,22 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="container ion-text-center">
+    <img id="categoryImg" src="../../assets/categoria.png">
+    <div class="categoryText" >{{currentCategory}}</div>
+    <img id="reloadImg" (click)="selectNewCategory()" src="../../assets/reload.png">
+  </div>
+  <div class="midContent">
+    <div class="timerBtnDiv">
+      <button (click)="clearTimer()" class="round-6">
+        <img id="timerImgBtn" src="../../assets/stopwatch.png">
+      </button>
+    </div>
+    <div class="timerLblCount">
+      <span class="timerText" [ngStyle]="{'color': timerReachedEnd ? 'red' : '#ffffff'}"><span id="watchSeconds">00</span>:<span id="watchTens">00</span></span>
+    </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-content class="ion-padding">
+ 
+    </ion-content>
+    
   </div>
 </ion-content>
