@@ -8,14 +8,14 @@ import { Router } from '@angular/router';
 })
 export class SplashPage implements OnInit {
 
-  constructor(private router:Router) { }
-  ngOnInit() {}
+  constructor(private router: Router) { }
+  ngOnInit() { }
 
 
-   ionViewWillEnter(){
-    setTimeout(() =>{
-      this.router.navigateByUrl("home");
-    },2000)
+  ionViewWillEnter() {
+    setTimeout(() => {
+      this.router.navigateByUrl("menuprincipal");
+    }, 2000)
   }
- 
+
 }

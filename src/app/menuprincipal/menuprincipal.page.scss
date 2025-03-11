@@ -1,0 +1,36 @@
+ion-content {
+    --background: #201C51;
+}
+
+ion-header {
+    --background: #201C51;
+    background-color: #201C51;
+    height: 10%;
+}
+
+img {
+    height: 170px;
+}
+
+.title {
+    font-size: 50px;
+    color: #ffffff;
+    font-weight: 700;
+
+}
+
+ion-button {
+    --background: #fff;
+    margin-top: 15px;
+    color: #201C51;
+    --border-radius: 15px !important;
+    border-radius: 15px !important;
+    width: 100%;
+}
+
+ion-list {
+    background-color: #201C51;
+    --background: #201C51;
+    padding-left: 15px;
+    padding-right: 15px;
+}

@@ -1,7 +1,8 @@
 <ion-content [fullscreen]="true">
+  <ion-header></ion-header>
   <div class="container ion-text-center">
     <img id="categoryImg" src="../../assets/categoria.png">
-    <div class="categoryText" >{{currentCategory}}</div>
+    <div class="categoryText">{{currentCategory}}</div>
     <img id="reloadImg" (click)="selectNewCategory()" src="../../assets/reload.png">
   </div>
   <div class="midContent">
@@ -11,12 +12,13 @@
       </button>
     </div>
     <div class="timerLblCount">
-      <span class="timerText" [ngStyle]="{'color': timerReachedEnd ? 'red' : '#ffffff'}"><span id="watchSeconds">00</span>:<span id="watchTens">00</span></span>
+      <span class="timerText" [ngStyle]="{'color': timerReachingdEnd ? 'red' : '#ffffff'}"><span
+          id="watchSeconds">00</span>:<span id="watchTens">00</span></span>
     </div>
 
     <ion-content class="ion-padding">
- 
+
     </ion-content>
-    
+
   </div>
 </ion-content>

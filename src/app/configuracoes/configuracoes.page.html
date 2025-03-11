@@ -1,0 +1,39 @@
+<ion-header>
+</ion-header>
+<ion-content>
+  <ion-grid>
+
+    <div class="container ion-text-center">
+      <img src="../../assets/doggoconstrucaofinal.png">
+    </div>
+
+    <ion-row>
+      <ion-col style="justify-content: center;display: flex;">
+        <ion-label class="title">
+          Configurações
+        </ion-label>
+      </ion-col>
+    </ion-row>
+
+    <div class="contentContainer">
+
+      <ion-row style="margin-top: 15px;">
+        <ion-label class="maxTime">Selecione o tempo maximo:</ion-label>
+      </ion-row>
+      <ion-row>
+
+        <ion-range (ionChange)="changeMaxTime()" [(ngModel)]="maxTime" aria-label="Custom range" [min]="0" [max]="60"
+          [pin]="true"></ion-range>
+        <ion-label class="maxTimeLbl">{{maxTime}}</ion-label>
+      </ion-row>
+
+      <ion-row>
+        <ion-button (click)="voltar()">
+          Voltar
+        </ion-button>
+      </ion-row>
+
+    </div>
+
+  </ion-grid>
+</ion-content>

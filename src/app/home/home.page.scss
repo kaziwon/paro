@@ -7,36 +7,37 @@
   top: 50%;
   transform: translateY(-50%);
 }
-ion-content{
+
+ion-content {
   --ion-background-color: #070838;
 }
 
-.midContent{
+.midContent {
   height: 70%;
 }
 
-.timerBtnDiv{
+.timerBtnDiv {
   text-align: center;
   margin-top: 26%;
 }
 
-#timerImgBtn{
+#timerImgBtn {
   max-width: 79%;
 }
 
-.timerLblCount{
+.timerLblCount {
   margin-top: 5%;
   text-align: center;
 }
 
-.timerText{
+.timerText {
   color: #fff;
   font-size: 57px;
   font-weight: 600;
   font-family: fangsong;
 }
 
-.round-6{
+.round-6 {
   background-color: #fff;
   color: white;
   border: none;
@@ -45,7 +46,7 @@ ion-content{
   height: 217px;
   width: 217px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-  0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease;
   border-radius: 70%;
 }
@@ -56,7 +57,7 @@ ion-content{
   transform: translateY(2px);
 }
 
-.categoryText{
+.categoryText {
   position: absolute;
   top: 11%;
   left: 50%;
@@ -68,22 +69,27 @@ ion-content{
   width: 314px;
 }
 
-#reloadImg{
+#reloadImg {
   position: absolute;
-  top: 6%;
+  top: 8%;
   left: 86%;
   transform: translate(-50%, -50%);
   width: 35px;
 }
 
-#categoryImg{
+#categoryImg {
   max-width: 93%;
   margin-top: 17px;
+}
+
+.container {
+  margin-top: 20px;
 }
 
 #container strong {
   font-size: 20px;
   line-height: 26px;
+
 }
 
 #container p {

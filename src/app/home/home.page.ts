@@ -1,5 +1,5 @@
-import { Component,ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
-
+import { Component, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-home',
@@ -12,90 +12,97 @@ export class HomePage {
   public watchSeconds = '00';
   public watchTens = '00'
   public interval;
-  public seconds:number = 0; 
-  public tens:number = 0; 
+  public seconds: number = 0;
+  public tens: number = 0;
   public appendTens = document.getElementById("watchTens");
   public appendSeconds = document.getElementById("watchSeconds");
 
-  public timerReachedEnd:boolean = false;
-  public currentCategory:string = 'Categoria';
-  constructor() {
+  public timerReachingdEnd: boolean = false;
+  public currentCategory: string = 'Categoria';
+  constructor(private storage: Storage) {
   }
 
   private signaturePad: any;
+  maxTime: any = 15;
 
   ionViewDidEnter() {
-  
+    this.storage.get('config_tempo').then((val) => {
+      this.maxTime = val;
+    })
   }
 
 
 
-  clearTimer(){
+  clearTimer() {
     //clearInterval(this.interval);
-    this.timerReachedEnd = false;
+    this.timerReachingdEnd = false;
     this.tens = 0;
     this.seconds = 0;
     document.getElementById("watchSeconds").innerText = "00";
     document.getElementById("watchTens").innerText = "00";
     clearInterval(this.interval);
-    this.interval = setInterval(()=>{
+    this.interval = setInterval(() => {
 
-      if(this.tens == undefined){
+      if (this.tens == undefined) {
         this.tens = 0;
         this.seconds = 0;
-      }else{
-        this.tens++; 
+      } else {
+        this.tens++;
       }
-  
-      if(this.tens <= 9){
+
+      if (this.tens <= 9) {
         document.getElementById("watchTens").innerText = "0" + this.tens;
       }
-      
-      if (this.tens > 9){
+
+      if (this.tens > 9) {
         document.getElementById("watchTens").innerText = this.tens.toString();
-        
-      } 
-      
+
+      }
+
       if (this.tens > 99) {
         console.log("seconds");
         this.seconds++;
-          document.getElementById("watchSeconds").innerText = "0" + this.seconds;
-          console.log(this.watchSeconds);
-          this.tens = 0;
-          document.getElementById("watchTens").innerText = "0" + 0;
-          if(this.seconds == 15){
-            console.log('aquiii!!!'); 
-            document.getElementById("watchSeconds").innerText = "15";
-            document.getElementById("watchTens").innerText = "00";
-            console.log(this.interval);
-            this.timerReachedEnd = true;
-            clearInterval(this.interval);
-            return;
-          }
-  
-      }
-      
-      if (this.seconds > 9){
-        document.getElementById("watchSeconds").innerText  = this.seconds.toString();
+        document.getElementById("watchSeconds").innerText = "0" + this.seconds;
+        console.log(this.watchSeconds);
+        this.tens = 0;
+        document.getElementById("watchTens").innerText = "0" + 0;
+        if (this.seconds == this.maxTime) {
+
+          document.getElementById("watchSeconds").innerText = this.maxTime.toString();
+          document.getElementById("watchTens").innerText = "00";
+
+
+          clearInterval(this.interval);
+          return;
+        } else if (this.seconds == this.maxTime - 3) {
+          this.timerReachingdEnd = true;
+        }
+
       }
 
-    },10);
+      if (this.seconds > 9) {
+        document.getElementById("watchSeconds").innerText = this.seconds.toString();
+      }
+
+    }, 10);
     console.log(this.interval);
   }
 
-  selectNewCategory(){
+  selectNewCategory() {
     var categories = `Adjetivos/características;
     Alimentos;
     Animais;
     Aparelhos eletrônicos;
     Aplicativos de celular;
     Árvores;
+    Fast foods;
     Atores;
     Atrizes;
     Bandas;
     Bilionários;
     Capitais de países;
     Carros;
+    Cantores famosos;
     CEP (Cidade, Estado ou País);
     Cidades;
     Coisas amarelas;
@@ -119,7 +126,9 @@ export class HomePage {
     Coisas grudentas;
     Coisas pequenas;
     Coisas pra beber;
+    Coisas que acha no bolso;
     Coisas que as pessoas escondem;
+    Coisas que acha no bolso;
     Coisas pretas
     Coisas que matam;
     Coisas que você não entende;
@@ -203,11 +212,51 @@ export class HomePage {
     Universo star wars;
     Sabores de pastéis;
     Histórias infantis;
-    Medos e fobias;`.replace(/(\r\n|\n|\r)/gm, "");;
+    Medos e fobias;
+    Cidades turisticas];
+    Super poderes;
+    Frutas tropicais;
+    Raças de gatos;
+    Tipos de dança;
+    Alimentos típicos de cada país;
+    Animais de estimação;
+    Atletas famosos;
+    Bandas de rock;
+    Cidades de praia;
+    Crianças famosas;
+    Desenhos de anime;
+    Dinossauros;
+    Filmes de terror;
+    Filmes de ação;
+    Filmes de comédia;
+    Filmes de romance;
+    Filmes de ficção científica;
+    Filmes de aventura;
+    Frutas exóticas;
+    Gêneros de música;
+    Jogos de computador;
+    Jogos de tabuleiro;
+    Lendas e mitos;
+    Músicas de carnaval;
+    Parques;
+    Pinturas famosas;
+    Profissões de saúde;
+    Profissões de tecnologia;
+    Profissões de educação;
+    Profissões de arte;
+    Profissões de esporte;
+    Raças de cavalos;
+    Regiões geográficas;
+    Restaurantes famosos;
+    Ruas famosas;
+    Séries de TV;
+    Rios;
+    Lagos;
+    Universidades;`.replace(/(\r\n|\n|\r)/gm, "");;
 
-    var arrayCategories = categories.split(';    '); 
+    var arrayCategories = categories.split(';    ');
 
-    var randomItem = arrayCategories[Math.floor(Math.random()*arrayCategories.length)];
+    var randomItem = arrayCategories[Math.floor(Math.random() * arrayCategories.length)];
     this.currentCategory = randomItem;
     console.log(randomItem);
     this.clearTimer();
